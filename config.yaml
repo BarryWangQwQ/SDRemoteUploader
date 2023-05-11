@@ -1,0 +1,3 @@
+web_ui_path: "D:/novelai-webui"
+server_name: "127.0.0.1"
+server_port: 7777
