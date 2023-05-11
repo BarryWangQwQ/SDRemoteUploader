@@ -34,22 +34,23 @@ def movefile(src_file, dst_path):
     shutil.move(src_file, os.path.join(dst_path, f_name))
 
 
+def timestamp():
+    return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+
+
 def upload(upload_path, file_obj):
     if upload_path is None:
-        time_stamp = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-        text = f"[{time_stamp}] 错误: 未指定模型的上传类型"
+        text = f"[{timestamp()}] 错误: 未指定模型的上传类型"
         print(text)
         return text
     try:
         movefile(file_obj.name, path[upload_path])
         _, f_name = os.path.split(file_obj.name)
-        time_stamp = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-        text = f"[{time_stamp}] 已载入 {f_name} 到 {upload_path} 合集"
+        text = f"[{timestamp()}] 已载入 {f_name} 到 {upload_path} 合集"
         print(text)
         return text
     except (Exception, BaseException):
-        time_stamp = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-        text = f"[{time_stamp}] 上传失败"
+        text = f"[{timestamp()}] 上传失败"
         print(text)
         return text
 
